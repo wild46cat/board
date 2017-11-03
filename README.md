@@ -1,5 +1,5 @@
 # board
-
+# vue 模板
 > A Vue.js project
 
 ## Build Setup
