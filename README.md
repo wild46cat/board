@@ -20,6 +20,7 @@ npm run build --report
 
 # vue 模板
 ## 参考网址：http://element-cn.eleme.io/#/zh-CN
+## 安装dev tools：http://www.cnblogs.com/tanyongli/p/7554045.html
 
 # vue路由传参数
 ``` bash
