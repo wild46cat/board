@@ -1,19 +1,40 @@
 <template>
   <el-container style="margin: 0;padding: 0;">
-    <el-header>asdf</el-header>
+    <el-header>标题 {{msg}}
+      <el-button @click="goHome">HOME</el-button>
+    </el-header>
     <el-container>
-      <el-aside width="200px" class="border2">Aside</el-aside>
-      <el-main class="border3">Main</el-main>
+      <el-aside width="400px" class="border2">
+        <el-button @click="jumptopage1">跳转page1</el-button>
+        <el-button @click="jumptopage2">跳转page2</el-button>
+        <br/>
+        <router-link to="/home/page1">page1</router-link>
+        <router-link to="/home/page2">page2</router-link>
+      </el-aside>
+      <el-main class="border3">Main
+        <router-view/>
+      </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'Home',
     data () {
       return {
         msg: 'Welcome to Your Vue.js App'
+      }
+    },
+    methods: {
+      goHome: function () {
+        this.$router.push({name: 'home'});
+      },
+      jumptopage1: function () {
+        this.$router.push({name: 'page1', query: {id: 1, name: 'xiaoming'}});
+      },
+      jumptopage2: function () {
+        this.$router.push({name: 'page2', params: {id: 1, name: '小李'}});
       }
     }
   }
