@@ -42,3 +42,5 @@ watch: {
       }
     }
 ```
+# 版本model-v0.0.1
+![Image text](./githubpic/model-v0.0.1.png)
