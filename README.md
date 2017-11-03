@@ -24,7 +24,8 @@ npm run build --report
 # vue路由传参数
 ``` bash
 # this.$router.push({path:'/xxx',query:{id:1}});//类似get传参，通过URL传递参数
-# this.$router.push({path:'/xxx',params:{id:1}});//类似post传参
+# //由于动态路由也是传递params的，所以在 this.$router.push() 方法中 path不能和params一起使用，否则params将无效。需要用name来指定页面。
+# this.$router.push({name:'page2',params:{id:1}});//类似post传参
 ```
 # vue路由接收参数
 ``` bash
