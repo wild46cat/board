@@ -1,6 +1,5 @@
 # board
-# vue 模板
-##参考网址：http://element-cn.eleme.io/#/zh-CN
+
 > A Vue.js project
 
 ## Build Setup
@@ -19,4 +18,12 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# vue 模板
+##参考网址：http://element-cn.eleme.io/#/zh-CN
+
+#vue路由传参数
+this.$route.push({path:'/xxx',query:{id:1}});//类似get传参，通过URL传递参数
+this.$route.push({path:'/xxx',params:{id:1}});//类似post传参
+
+this.$route.query.id
+this.$route.params.id
