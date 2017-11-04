@@ -3,10 +3,18 @@
     <div>page1</div>
     <div>id:{{selfid}}</div>
     <div>name:{{selfname}}</div>
+    <div>
+      Clicked: {{ $store.state.Page1.count }} times, count is {{evenOrOddPage1}}.<br/>
+      <el-button @click="incrementpage1">+</el-button>
+      <el-button @click="decrementpage1">-</el-button>
+      <el-button @click="incrementpage1IfOdd">Increment if odd</el-button>
+      <el-button @click="incrementpage1Async">Increment async</el-button>
+    </div>
   </div>
 </template>
 
 <script>
+  import {mapGetters, mapActions} from 'vuex'
   export default {
     name: 'page1',
     data () {
@@ -30,8 +38,17 @@
         let queryparams = this.$route.query;
         this.selfid = queryparams.id;
         this.selfname = queryparams.name;
-      }
-    }
+      },
+      ...mapActions([
+        'incrementpage1',
+        'decrementpage1',
+        'incrementpage1IfOdd',
+        'incrementpage1Async'
+      ])
+    },
+    computed: mapGetters([
+      'evenOrOddPage1'
+    ])
   }
 </script>
 

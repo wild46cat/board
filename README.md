@@ -49,3 +49,7 @@ watch: {
 # 版本model-v0.0.2
 ## 添加了vuex组件
 ![Image text](./githubpic/model-v0.0.2.png)
+
+# 版本model-v0.0.2
+## 添加vuex对多个模块的支持
+![Image text](./githubpic/model-v0.0.3.png)
