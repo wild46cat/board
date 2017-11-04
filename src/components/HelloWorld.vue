@@ -7,6 +7,7 @@
       <el-aside width="400px" class="border2">
         <el-button @click="jumptopage1">跳转page1</el-button>
         <el-button @click="jumptopage2">跳转page2</el-button>
+        <el-button @click="jumptocounter">跳转counter</el-button>
         <br/>
         <router-link to="/home/page1">page1</router-link>
         <router-link to="/home/page2">page2</router-link>
@@ -35,7 +36,10 @@
       },
       jumptopage2: function () {
         this.$router.push({name: 'page2', params: {id: 1, name: '小李'}});
-      }
+      },
+      jumptocounter: function () {
+        this.$router.push({name: 'counter'});
+      },
     }
   }
 </script>

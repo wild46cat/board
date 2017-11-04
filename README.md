@@ -20,7 +20,7 @@ npm run build --report
 
 # vue 模板
 ## 参考网址：http://element-cn.eleme.io/#/zh-CN
-## 安装dev tools：http://www.cnblogs.com/tanyongli/p/7554045.html
+## 安装dev toolshttp://blog.csdn.net/sinat_17775997/article/details/70224280
 
 # vue路由传参数
 ``` bash
@@ -45,3 +45,7 @@ watch: {
 ```
 # 版本model-v0.0.1
 ![Image text](./githubpic/model-v0.0.1.png)
+
+# 版本model-v0.0.2
+## 添加了vuex组件
+![Image text](./githubpic/model-v0.0.2.png)
