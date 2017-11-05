@@ -10,6 +10,10 @@
       <el-button @click="incrementpage1IfOdd">Increment if odd</el-button>
       <el-button @click="incrementpage1Async">Increment async</el-button>
     </div>
+    <div>
+      <el-button @click="testget">getRequest</el-button>
+      <el-button @click="page1testpost">postRequest</el-button>
+    </div>
   </div>
 </template>
 
@@ -39,11 +43,15 @@
         this.selfid = queryparams.id;
         this.selfname = queryparams.name;
       },
+      testget:function () {
+        this.$store.dispatch('page1testget',{id:9,name:'aabcc'});
+      },
       ...mapActions([
         'incrementpage1',
         'decrementpage1',
         'incrementpage1IfOdd',
-        'incrementpage1Async'
+        'incrementpage1Async',
+        'page1testpost'
       ])
     },
     computed: mapGetters([

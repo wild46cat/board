@@ -43,6 +43,15 @@ watch: {
       }
     }
 ```
+
+# 引入axios
+## 参考文档：https://www.npmjs.com/package/axios
+## 参考文档：http://blog.csdn.net/wild46cat/article/details/78447467
+``` bash
+## npm install --save
+import axios from 'axios'
+```
+
 # 版本model-v0.0.1
 ![Image text](./githubpic/model-v0.0.1.png)
 
@@ -50,6 +59,13 @@ watch: {
 ## 添加了vuex组件
 ![Image text](./githubpic/model-v0.0.2.png)
 
-# 版本model-v0.0.2
+# 版本model-v0.0.3
 ## 添加vuex对多个模块的支持
 ![Image text](./githubpic/model-v0.0.3.png)
+
+# 版本model-v0.0.4
+## 添加axios(vuex集成、普通方式)支持，能够与后台交互
+![Image text](./githubpic/model-v0.0.4.png)
+
+
+

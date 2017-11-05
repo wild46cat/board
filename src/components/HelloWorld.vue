@@ -2,6 +2,8 @@
   <el-container style="margin: 0;padding: 0;">
     <el-header>标题 {{msg}}
       <el-button @click="goHome">HOME</el-button>
+      <el-button @click="testGet">GetRequest</el-button>
+      <el-button @click="testPost">PostRequest</el-button>
     </el-header>
     <el-container>
       <el-aside width="400px" class="border2">
@@ -40,6 +42,35 @@
       jumptocounter: function () {
         this.$router.push({name: 'counter'});
       },
+      testGet: function () {
+        this.$ajax({
+          method: 'get',
+          url: '/test/greeting',
+          params: {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+          }
+        }).then(function (response) {
+          console.log(response);
+        }).catch(function (error) {
+          console.log(error);
+        });
+      },
+      testPost: function () {
+        var params = new URLSearchParams();
+        params.append('name', 'hello jdmc你好');
+        params.append('id', '2');
+        this.$ajax({
+          method: 'post',
+          url: '/test/greeting2',
+//          data:params
+          data: {id: '3', name: 'abc'}
+        }).then(function (response) {
+          console.log(response);
+        }).catch(function (error) {
+          console.log(error);
+        })
+      }
     }
   }
 </script>

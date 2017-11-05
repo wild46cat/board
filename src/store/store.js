@@ -6,12 +6,12 @@ import Counter from './modules/counter/counter'
 import Page1 from './modules/model/page1'
 import Page2 from './modules/model/page2'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   getters,
   actions,
-  modules:{
+  modules: {
     Counter,
     Page1,
     Page2

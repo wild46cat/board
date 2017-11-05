@@ -1,3 +1,4 @@
+import axios from 'axios'
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
@@ -16,6 +17,9 @@ const mutations = {
   },
   decrementpage1 (state) {
     state.count--
+  },
+  handlepostres(state,params){
+    state.count=params;
   }
 }
 
@@ -35,6 +39,37 @@ const actions = {
         commit('incrementpage1')
         resolve()
       }, 1000)
+    })
+  },
+  page1testget:function ({commit},params) {
+    axios({
+      method: 'get',
+      url: '/test/greeting',
+      params:params
+      // params: {
+      //   firstName: 'Fred',
+      //   lastName: 'Flintstone'
+      // }
+    }).then(function (response) {
+      console.log(response);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  },
+  page1testpost:function ({commit}) {
+    var params = new URLSearchParams();
+    params.append('name', 'hello jdmc你好');
+    params.append('id', '2');
+    axios({
+      method: 'post',
+      url: '/test/greeting2',
+//          data:params
+      data: {id: '3', name: 'abc'}
+    }).then(function (response) {
+      console.log(response);
+      commit('handlepostres',response.data.id);
+    }).catch(function (error) {
+      console.log(error);
     })
   }
 }
