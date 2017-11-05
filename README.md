@@ -48,8 +48,17 @@ watch: {
 ## 参考文档：https://www.npmjs.com/package/axios
 ## 参考文档：http://blog.csdn.net/wild46cat/article/details/78447467
 ``` bash
-## npm install --save
+## npm install axios --save
 import axios from 'axios'
+```
+# 引入echart
+## 参考文档：http://blog.csdn.net/u013069892/article/details/70256596
+## 参考文档：http://echarts.baidu.com/tutorial.html#ECharts%20%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%92%8C%E8%A1%8C%E4%B8%BA
+``` bash
+## npm install echarts --save
+import echarts from 'echarts'
+Vue.prototype.$echarts=echarts
+
 ```
 
 # 版本model-v0.0.1
@@ -67,5 +76,8 @@ import axios from 'axios'
 ## 添加axios(vuex集成、普通方式)支持，能够与后台交互
 ![Image text](./githubpic/model-v0.0.4.png)
 
+# 版本model-v0.0.5
+## 添加echart
+![Image text](./githubpic/model-v0.0.5.png)
 
 

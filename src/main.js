@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import router from './router'
 import store from './store/store'
+import echarts from 'echarts'
 import axios from 'axios'
 import resource from '../static/resource'
 
@@ -15,6 +16,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/www-form-urlencoded';
 axios.defaults.baseURL = resource.BASE_URL;
 Vue.prototype.$ajax = axios;
 
+Vue.prototype.$echarts=echarts;
 
 Vue.use(Vuex);
 Vue.use(ElementUI);
