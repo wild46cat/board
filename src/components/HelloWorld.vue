@@ -15,6 +15,7 @@
         <router-link to="/home/page2">page2</router-link>
         <br/>
         <el-button @click="jumptochartexample">chart</el-button>
+        <el-button @click="jumptochartexample2">chart2</el-button>
       </el-aside>
       <el-main class="border3">Main
         <router-view/>
@@ -46,6 +47,9 @@
       },
       jumptochartexample:function () {
         this.$router.push({name: 'chartexample'});
+      },
+      jumptochartexample2:function () {
+        this.$router.push({name: 'chartexample2'});
       },
       testGet: function () {
         this.$ajax({
