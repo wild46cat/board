@@ -80,4 +80,8 @@ Vue.prototype.$echarts=echarts
 ## 添加echart
 ![Image text](./githubpic/model-v0.0.5.png)
 
+# 版本model-v0.0.6
+## 一个简单的echart关系图的例子demo
+![Image text](./githubpic/model-v0.0.6.png)
+
 
