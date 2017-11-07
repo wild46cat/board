@@ -272,7 +272,7 @@
                   }
                 },
                 lineStyle: {
-//                  normal: {curveness: 0.2}
+                  normal: {curveness: 0.2}
                 }
               }, {
                 source: 'p1',
