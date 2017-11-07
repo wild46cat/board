@@ -44,12 +44,12 @@
         let seriesColorState1 = '#669933';
         let seriesColorState2 = '#CCCCCC';
         let seriesColorState3 = '#CC0033';
-        let defaultSymbolSize = 60;
-        let productLineSymbolSize = 60;
-        let appNameSymbolSize = 40;
-        let exchangeSymbolSize = 60;
-        let queueSymbolSize = 60;
-        let channelSymbolSize = 60;
+        let defaultSymbolSize = 20;
+        let productLineSymbolSize = 20;
+        let appNameSymbolSize = 20;
+        let exchangeSymbolSize = 20;
+        let queueSymbolSize = 20;
+        let channelSymbolSize = 20;
         let option = {
           title: {
             text: 'Graph 简单示例'
@@ -59,19 +59,19 @@
             formatter: function (params) {
               switch (params.data.type) {
                 case 'productline':
-                  return "产线：XXXX <br/> 简称:XXXXX";
+                  return params.data.name;
                   break;
                 case 'app':
-                  return "应用:XXXX<br/>描述:XXXXXX";
+                  return params.data.name;
                   break;
                 case 'exchange':
-                  return "exchange名称:XXXX<br/>exchange类型:XXXXX<br/>routing-key:XXXX<br/>是否持久化:XX<br/>是否自动删除:XXXX<br/>是否internal:XXX<br/>创建者:XXXX";
+                  return params.data.name;
                   break;
                 case 'queue':
-                  return "queue名称:XXX<br/>autoack:XXX<br/>fetchcount:XXXX<br/>threadnum:XXX<br/>创建者:XXXX<br/>描述:XXXXX";
+                  return params.data.name;
                   break;
                 case 'channel':
-                  return "channel ip:XXXX<br/>channel port:XXXX<br/>状态:XXX<br/>channel number:XXX<br/>exchange类型：XXXX<br/>binndingkey:XXXX<br/>描述:XXXXX";
+                  return params.data.name;
                   break;
                 default:
                   return "";
@@ -92,7 +92,8 @@
                   show: true,
                   textBorderColor: 'transparent',
                   color: '#555',
-                  fontWeight: 'bold'
+                  fontWeight: 'bold',
+                  position:'bottom'
                 }
               },
               edgeSymbol: ['circle', 'arrow'],
@@ -142,42 +143,42 @@
               }, {
                 name: 'p1-a1',
                 x: 300,
-                y: 100,
+                y: 0,
                 type: 'app',
                 symbolSize: appNameSymbolSize,
                 itemStyle: {normal: {color: appNameColor}}
               }, {
                 name: 'p1-a2',
                 x: 300,
-                y: 150,
+                y: 100,
                 type: 'app',
                 symbolSize: appNameSymbolSize,
                 itemStyle: {normal: {color: appNameColor}}
               }, {
                 name: 'p2-a1',
                 x: 300,
-                y: 300,
+                y: 200,
                 type: 'app',
                 symbolSize: appNameSymbolSize,
                 itemStyle: {normal: {color: appNameColor}}
               }, {
                 name: 'p2-a2',
                 x: 300,
-                y: 350,
+                y: 300,
                 type: 'app',
                 symbolSize: appNameSymbolSize,
                 itemStyle: {normal: {color: appNameColor}}
               }, {
-                name: 'bussiness_ci',
+                name: 'p3-a1',
+                x: 300,
+                y: 400,
+                type: 'app',
+                symbolSize: appNameSymbolSize,
+                itemStyle: {normal: {color: appNameColor}}
+              }, {
+                name: 'p3-a2',
                 x: 300,
                 y: 500,
-                type: 'app',
-                symbolSize: appNameSymbolSize,
-                itemStyle: {normal: {color: appNameColor}}
-              }, {
-                name: 'bussiness_xs',
-                x: 300,
-                y: 550,
                 type: 'app',
                 symbolSize: appNameSymbolSize,
                 itemStyle: {normal: {color: appNameColor}}
@@ -311,7 +312,7 @@
                 }
               }, {
                 source: 'p3',
-                target: 'bussiness_ci',
+                target: 'p3-a1',
                 label: {
                   normal: {
                     show: true,
@@ -323,7 +324,7 @@
                 }
               }, {
                 source: 'p3',
-                target: 'bussiness_xs',
+                target: 'p3-a2',
                 label: {
                   normal: {
                     show: true,
@@ -384,7 +385,9 @@
                 label: {
                   normal: {
                     show: true,
-                    formatter: ''
+                    formatter: '连接',
+                    fontSize:10
+
                   }
                 },
               }, {
