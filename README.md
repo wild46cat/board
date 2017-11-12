@@ -54,6 +54,7 @@ import axios from 'axios'
 # 引入echart
 ## 参考文档：http://blog.csdn.net/u013069892/article/details/70256596
 ## 参考文档：http://echarts.baidu.com/tutorial.html#ECharts%20%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%92%8C%E8%A1%8C%E4%B8%BA
+## 参考文档：http://echarts.baidu.com/option.html#title
 ``` bash
 ## npm install echarts --save
 import echarts from 'echarts'
@@ -62,26 +63,29 @@ Vue.prototype.$echarts=echarts
 ```
 
 # 版本model-v0.0.1
-![Image text](./githubpic/model-v0.0.1.png)
+![model-v0.0.1](./githubpic/model-v0.0.1.png)
 
 # 版本model-v0.0.2
 ## 添加了vuex组件
-![Image text](./githubpic/model-v0.0.2.png)
+![model-v0.0.2](./githubpic/model-v0.0.2.png)
 
 # 版本model-v0.0.3
 ## 添加vuex对多个模块的支持
-![Image text](./githubpic/model-v0.0.3.png)
+![model-v0.0.3](./githubpic/model-v0.0.3.png)
 
 # 版本model-v0.0.4
 ## 添加axios(vuex集成、普通方式)支持，能够与后台交互
-![Image text](./githubpic/model-v0.0.4.png)
+![model-v0.0.4](./githubpic/model-v0.0.4.png)
 
 # 版本model-v0.0.5
 ## 添加echart
-![Image text](./githubpic/model-v0.0.5.png)
+![model-v0.0.5](./githubpic/model-v0.0.5.png)
 
 # 版本model-v0.0.6
 ## 一个简单的echart关系图的例子demo
-![Image text](./githubpic/model-v0.0.6.png)
+![model-v0.0.6](./githubpic/model-v0.0.6.png)
 
+# 版本model-v0.0.7
+## 对关系图进行完善，一个更强大的关系图(可以参考echart的官方手册http://echarts.baidu.com/option.html#title)
+![model-v0.0.7](./githubpic/model-v0.0.7.png)
 
