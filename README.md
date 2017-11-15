@@ -89,3 +89,6 @@ Vue.prototype.$echarts=echarts
 ## 对关系图进行完善，一个更强大的关系图(可以参考echart的官方手册http://echarts.baidu.com/option.html#title)
 ![model-v0.0.7](./githubpic/model-v0.0.7.png)
 
+# 版本model-v0.0.8
+## 添加全局路由监控功能，引入iconfont图标
+![model-v0.0.8](./githubpic/model-v0.0.8.png)
