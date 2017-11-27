@@ -16,7 +16,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/www-form-urlencoded';
 axios.defaults.baseURL = resource.BASE_URL;
 Vue.prototype.$ajax = axios;
 
-Vue.prototype.$echarts=echarts;
+Vue.prototype.$echarts = echarts;
 
 Vue.use(Vuex);
 Vue.use(ElementUI);

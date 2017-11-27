@@ -11,7 +11,7 @@
       <el-button>删除连接</el-button>
     </div>
     <div>
-      <div id="myChart" :style="{width: '100%', height: '500px'}" style="border: 1px solid red;"></div>
+      <div id="myChart" :style="{width: '100%', height: '700px'}" style="border: 1px solid red;"></div>
     </div>
   </div>
 </template>
@@ -32,6 +32,12 @@
       let myChart = this.$echarts.init(document.getElementById('myChart'));
       myChart.on('click', function (params) {
         console.log(params);
+        //点击高亮
+        that.myChart.dispatchAction({
+          type: 'focusNodeAdjacency',
+          // 使用 dataIndex 来定位节点。
+          dataIndex: params.dataIndex
+        });
         if (params.dataType == 'edge') {
           that.handleClick(params);
         } else if (params.dataType == 'node') {
@@ -41,6 +47,19 @@
             that.secondNode = params.name;
           }
         }
+      });
+      //取消右键的弹出菜单
+      document.oncontextmenu = function () {
+        return false;
+      };
+      //右键取消高亮
+      myChart.on('contextmenu', function (params) {
+        console.log(params);
+        that.myChart.dispatchAction({
+          type: 'unfocusNodeAdjacency',
+          // 使用 seriesId 或 seriesIndex 或 seriesName 来定位 series.
+          seriesIndex: params.seriesIndex,
+        })
       });
       that.myChart = myChart;
       that.drawLine();
@@ -111,15 +130,17 @@
               }
             }
           },
-          animationDurationUpdate: 1500,
+          animation: false,
+          animationDurationUpdate: 100,
           animationEasingUpdate: 'quinticInOut',
           series: [
             {
               type: 'graph',
               layout: 'none',
               symbolSize: defaultSymbolSize,
+              nodeScaleRatio: 1,
               roam: true,
-              focusNodeAdjacency: true,
+              focusNodeAdjacency: false,
               label: {
                 normal: {
                   show: true,
@@ -129,8 +150,8 @@
                   position: 'bottom'
                 }
               },
-              edgeSymbol: ['circle', 'arrow'],
-              edgeSymbolSize: [4, 10],
+//              edgeSymbol: ['none', 'none'],
+//              edgeSymbolSize: [4, 10],
               edgeLabel: {
                 normal: {
                   textStyle: {
@@ -382,260 +403,287 @@
                 symbolSize: lineNodeSymbolSize,
                 itemStyle: {normal: {color: lineNodeColor}}
               }],
+              links: [
+                {
+                  seriesName: 'aa',
+                  source: 1,
+                  target: 10
+                }, {
+                  seriesName: 'bb',
+                  source: 2,
+                  target: 14,
+                  lineStyle: {
+                    normal: {
+                      color: "#000",
+                      edgeSymbol: ['none', 'none'],
+                      edgeSymbolSize: [4, 10],
+                    }
+                  }
+                }, {
+                  source: 1,
+                  target: 9
+                }, {
+                  source: 10,
+                  target: 8
+                }, {
+                  source: 15,
+                  target: 8
+                }
+              ]
               // links: [],
-              links: [{
-                source: 'p1',
-                target: 'p1-a1',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-                  normal: {curveness: 0.2}
-                }
-              }, {
-                source: 'p1',
-                target: 'p1-a2',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
+//              links: [{
+//                source: 'p1',
+//                target: 'p1-a1',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
 //                  normal: {curveness: 0.2}
-                }
-              }, {
-                source: 'p2',
-                target: 'p2-a1',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-//                  normal: {curveness: 0.2}
-                }
-              }, {
-                source: 'p2',
-                target: 'p2-a2',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-//                  normal: {curveness: 0.2}
-                }
-              }, {
-                source: 'p3',
-                target: 'p3-a1',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-//                  normal: {curveness: 0.2}
-                }
-              }, {
-                source: 'p3',
-                target: 'p3-a2',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-//                  normal: {curveness: 0.2}
-                }
-              }, {
-                source: 'p4',
-                target: 'p4_a1',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-//                  normal: {curveness: 0.2}
-                }
-              }, {
-                source: 'p5',
-                target: 'p5_a1',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-//                  normal: {curveness: 0.2}
-                }
-              }, {
-                source: 'p1-a2',
-                target: 'node0',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-//                  normal: {curveness: 0.2}
-                }
-              }, {
-                source: 'node0',
-                target: 'Exchange1',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-//                  normal: {curveness: 0.2}
-                }
-              }, {
-                source: 'Exchange1',
-                target: 'queue2',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-              }, {
-                source: 'queue2',
-                target: 'node1',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: '连接',
-                    fontSize: 10
-
-                  }
-                },
-              }, {
-                source: 'queue2',
-                target: 'node2',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-              }, {
-                source: 'queue2',
-                target: 'node3',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-              }, {
-                source: 'node1',
-                target: 'p4_a1',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-              }, {
-                source: 'node2',
-                target: 'p4_a1',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-              }, {
-                source: 'node3',
-                target: 'p4_a1',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-              }, {
-                source: 'x1',
-                target: 'x2',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-                  normal: {
-                    type: 'dashed',
-                    color: baseBorderColor
-                  }
-                }
-              }, {
-                source: 'x2',
-                target: 'x3',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-                  normal: {
-                    type: 'dashed',
-                    color: baseBorderColor
-                  }
-                }
-              }, {
-                source: 'x3',
-                target: 'x4',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: 'Base'
-                  }
-                },
-                lineStyle: {
-                  normal: {
-                    type: 'dashed',
-                    color: baseBorderColor
-                  }
-                }
-              }, {
-                source: 'x4',
-                target: 'x1',
-                label: {
-                  normal: {
-                    show: true,
-                    formatter: ''
-                  }
-                },
-                lineStyle: {
-                  normal: {
-                    type: 'dashed',
-                    color: baseBorderColor
-                  }
-                }
-              }],
-              lineStyle: {
-                normal: {
-                  opacity: 0.9,
-                  width: 2,
-                  curveness: 0
-                }
-              }
+//                }
+//              }, {
+//                source: 'p1',
+//                target: 'p1-a2',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+////                  normal: {curveness: 0.2}
+//                }
+//              }, {
+//                source: 'p2',
+//                target: 'p2-a1',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+////                  normal: {curveness: 0.2}
+//                }
+//              }, {
+//                source: 'p2',
+//                target: 'p2-a2',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+////                  normal: {curveness: 0.2}
+//                }
+//              }, {
+//                source: 'p3',
+//                target: 'p3-a1',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+////                  normal: {curveness: 0.2}
+//                }
+//              }, {
+//                source: 'p3',
+//                target: 'p3-a2',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+////                  normal: {curveness: 0.2}
+//                }
+//              }, {
+//                source: 'p4',
+//                target: 'p4_a1',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+////                  normal: {curveness: 0.2}
+//                }
+//              }, {
+//                source: 'p5',
+//                target: 'p5_a1',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+////                  normal: {curveness: 0.2}
+//                }
+//              }, {
+//                source: 'p1-a2',
+//                target: 'node0',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+////                  normal: {curveness: 0.2}
+//                }
+//              }, {
+//                source: 'node0',
+//                target: 'Exchange1',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+////                  normal: {curveness: 0.2}
+//                }
+//              }, {
+//                source: 'Exchange1',
+//                target: 'queue2',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//              }, {
+//                source: 'queue2',
+//                target: 'node1',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: '连接',
+//                    fontSize: 10
+//
+//                  }
+//                },
+//              }, {
+//                source: 'queue2',
+//                target: 'node2',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//              }, {
+//                source: 'queue2',
+//                target: 'node3',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//              }, {
+//                source: 'node1',
+//                target: 'p4_a1',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//              }, {
+//                source: 'node2',
+//                target: 'p4_a1',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//              }, {
+//                source: 'node3',
+//                target: 'p4_a1',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//              }, {
+//                source: 'x1',
+//                target: 'x2',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+//                  normal: {
+//                    type: 'dashed',
+//                    color: baseBorderColor
+//                  }
+//                }
+//              }, {
+//                source: 'x2',
+//                target: 'x3',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+//                  normal: {
+//                    type: 'dashed',
+//                    color: baseBorderColor
+//                  }
+//                }
+//              }, {
+//                source: 'x3',
+//                target: 'x4',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: 'Base'
+//                  }
+//                },
+//                lineStyle: {
+//                  normal: {
+//                    type: 'dashed',
+//                    color: baseBorderColor
+//                  }
+//                }
+//              }, {
+//                source: 'x4',
+//                target: 'x1',
+//                label: {
+//                  normal: {
+//                    show: true,
+//                    formatter: ''
+//                  }
+//                },
+//                lineStyle: {
+//                  normal: {
+//                    type: 'dashed',
+//                    color: baseBorderColor
+//                  }
+//                }
+//              }],
+//              lineStyle: {
+//                normal: {
+//                  opacity: 0.9,
+//                  width: 2,
+//                  curveness: 0
+//                }
+//              }
             }
           ]
         };
