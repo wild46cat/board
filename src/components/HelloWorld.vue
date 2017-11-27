@@ -4,6 +4,8 @@
       <el-button @click="goHome">HOME</el-button>
       <el-button @click="testGet">GetRequest</el-button>
       <el-button @click="testPost">PostRequest</el-button>
+      <i class="el-icon-xy-sleep"></i>
+      <el-button icon="el-icon-xy-sleep">sleep</el-button>
     </el-header>
     <el-container>
       <el-aside width="400px" class="border2">
@@ -86,6 +88,8 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+  @import "../assets/iconfont/iconfont.css";
+
   .el-container {
     height: 100%;
   }
