@@ -18,6 +18,8 @@
         <br/>
         <el-button @click="jumptochartexample">chart</el-button>
         <el-button @click="jumptochartexample2">chart2</el-button>
+        <br/>
+        <el-button @click="jumptoselfmodelparent">selfmodelparent</el-button>
       </el-aside>
       <el-main class="border3">Main
         <router-view/>
@@ -52,6 +54,9 @@
       },
       jumptochartexample2:function () {
         this.$router.push({name: 'chartexample2'});
+      },
+      jumptoselfmodelparent:function () {
+        this.$router.push({name: 'selfmodelparent'});
       },
       testGet: function () {
         this.$ajax({
