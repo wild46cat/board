@@ -92,3 +92,8 @@ Vue.prototype.$echarts=echarts
 # 版本model-v0.0.8
 ## 添加全局路由监控功能，引入iconfont图标
 ![model-v0.0.8](./githubpic/model-v0.0.8.png)
+
+
+# 版本model-v0.0.9
+## ecahrt图添加点击高亮功能 添加子组件功能（自定义标签）
+![model-v0.0.9](./githubpic/model-v0.0.9.png)
