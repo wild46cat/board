@@ -6,6 +6,7 @@ import Page2 from '@/components/model/page2'
 import Counter from '@/components/counter/counter'
 import ChartExample from '@/components/chart/chartexample'
 import ChartExample2 from '@/components/chart/chartexample2'
+import ChartExample3 from '@/components/chart/chartexample3'
 import SelfModelParent from '@/components/selfmodel/selfmodelparent'
 
 Vue.use(Router);
@@ -23,6 +24,7 @@ export default new Router({
         {name: 'counter', path: '/home/counter', component: Counter},
         {name: 'chartexample', path: '/home/chartexample', component: ChartExample},
         {name: 'chartexample2', path: '/home/chartexample2', component: ChartExample2},
+        {name: 'chartexample3', path: '/home/chartexample3', component: ChartExample3},
         {name: 'selfmodelparent', path: '/home/selfmodelparent', component: SelfModelParent},
       ]
     }

@@ -16,8 +16,9 @@
         <router-link to="/home/page1">page1</router-link>
         <router-link to="/home/page2">page2</router-link>
         <br/>
-        <el-button @click="jumptochartexample">chart</el-button>
-        <el-button @click="jumptochartexample2">chart2</el-button>
+        <el-button @click="jumptochartexample">chart_line</el-button>
+        <el-button @click="jumptochartexample2">chart2_graph</el-button>
+        <el-button @click="jumptochartexample3">multicharts</el-button>
         <br/>
         <el-button @click="jumptoselfmodelparent">selfmodelparent</el-button>
       </el-aside>
@@ -54,6 +55,9 @@
       },
       jumptochartexample2:function () {
         this.$router.push({name: 'chartexample2'});
+      },
+      jumptochartexample3:function () {
+        this.$router.push({name: 'chartexample3'});
       },
       jumptoselfmodelparent:function () {
         this.$router.push({name: 'selfmodelparent'});
