@@ -34,7 +34,6 @@
     </el-menu>
     <el-container>
       <el-header>
-        <i class="el-icon-arrow-left"></i>
         标题 {{msg}}
         <el-button @click="goHome">HOME</el-button>
         <el-button @click="testGet">GetRequest</el-button>
@@ -63,6 +62,7 @@
     data () {
       return {
         msg: 'Welcome to Your Vue.js App',
+        //菜单展开开关
         isCollapse: false
       }
     },

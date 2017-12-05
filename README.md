@@ -97,3 +97,8 @@ Vue.prototype.$echarts=echarts
 # 版本model-v0.0.9
 ## ecahrt图添加点击高亮功能 添加子组件功能（自定义标签）
 ![model-v0.0.9](./githubpic/model-v0.0.9.png)
+
+
+# 版本model-v0.1.0
+## 添加菜单 优化图界面
+![model-v0.1.0](./githubpic/model-v0.1.0.png)
