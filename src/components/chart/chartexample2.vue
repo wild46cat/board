@@ -136,7 +136,13 @@
           series: [
             {
               type: 'graph',
-              layout: 'none',
+              layout: 'force',
+              force:{
+                initLayout:'circular',
+                repulsion:400,
+                edgeLength:[100,500],
+                gravity:0.1
+              },
               symbolSize: defaultSymbolSize,
               nodeScaleRatio: 1,
               roam: true,
