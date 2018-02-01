@@ -8,6 +8,7 @@ import ChartExample from '@/components/chart/chartexample'
 import ChartExample2 from '@/components/chart/chartexample2'
 import ChartExample3 from '@/components/chart/chartexample3'
 import SelfModelParent from '@/components/selfmodel/selfmodelparent'
+import Draggable from '@/components/draggablemodel/draggabledemo'
 
 Vue.use(Router);
 
@@ -26,6 +27,7 @@ export default new Router({
         {name: 'chartexample2', path: '/home/chartexample2', component: ChartExample2},
         {name: 'chartexample3', path: '/home/chartexample3', component: ChartExample3},
         {name: 'selfmodelparent', path: '/home/selfmodelparent', component: SelfModelParent},
+        {name: 'draggable', path: '/home/draggable', component: Draggable},
       ]
     }
 

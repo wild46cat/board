@@ -1,6 +1,7 @@
 <template>
   <el-container style="margin: 0;padding: 0;">
-    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64"
+    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+             background-color="#545c64"
              text-color="#fff" active-text-color="#ffd04b" :collapse="isCollapse" :default-openeds="['1', '3']">
       <el-submenu index="1">
         <template slot="title">
@@ -21,6 +22,10 @@
         <el-submenu index="1-7">
           <span slot="title">子组件</span>
           <el-menu-item index="1-4-1" @click="jumptoselfmodelparent">子组件</el-menu-item>
+        </el-submenu>
+        <el-submenu index="1-5">
+          <span slot="title">拖拽</span>
+          <el-menu-item index="1-5-1" @click="jumptodraggable">拖拽例子</el-menu-item>
         </el-submenu>
       </el-submenu>
       <el-menu-item index="2">
@@ -90,6 +95,9 @@
       },
       jumptoselfmodelparent: function () {
         this.$router.push({name: 'selfmodelparent'});
+      },
+      jumptodraggable: function () {
+        this.$router.push({name: 'draggable'});
       },
       testGet: function () {
         this.$ajax({
