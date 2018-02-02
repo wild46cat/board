@@ -1,6 +1,6 @@
 <template>
   <el-container style="margin: 0;padding: 0;">
-    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+    <el-menu default-active="1-4-1" class="el-menu-vertical-demo"
              background-color="#545c64"
              text-color="#fff" active-text-color="#ffd04b" :collapse="isCollapse" :default-openeds="['1', '3']">
       <el-submenu index="1">
