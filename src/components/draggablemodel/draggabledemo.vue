@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%">
     拖拽演示
     <draggable v-model="myArray">
       <transition-group>
@@ -15,9 +15,9 @@
     <div>
       <el-button @click="changeposition()">改变位置</el-button>
     </div>
-    <div class="spaceborder" style="margin-top: 20px;" @mousedown="mousedown($event)" @mousemove="move($event)"
-         @mouseup="mouseup($event)">
-      <p class="dragelement" :style="{'margin-left':xpx,'margin-top':ypx}"></p>
+    <div class="spaceborder" style="margin-top: 20px;">
+      <p @mousedown="mousedown($event)" @mousemove="move($event)"
+         @mouseup="mouseup($event)" class="dragelement" :style="{'margin-left':xpx,'margin-top':ypx}"></p>
     </div>
   </div>
 </template>
@@ -36,6 +36,10 @@
         y: 0,
         xpx: '0',
         ypx: '0',
+        divx: 220,
+        divy: 320,
+        elementx: 0,
+        elementy: 0,
         canMoveFlag: false
       }
     },
@@ -44,40 +48,43 @@
     },
     methods: {
       mousedown: function (event) {
+        console.log("mousedown");
         console.log(event);
         this.canMoveFlag = true;
-        this.x = event.offsetX;
-        this.y = event.offsetY;
+        this.elementx = event.clientX;
+        this.elementy = event.offsetY;
       },
       mouseup: function () {
+        console.log("mouseup");
         this.canMoveFlag = false;
       },
       move: function (event) {
         if (this.canMoveFlag) {
-          console.log(event);
+          console.log(event.offsetX + ":" + event.offsetY);
           console.log('move');
-          this.x = event.offsetX;
-          this.y = event.offsetY;
+          this.x = event.clientX - this.elementx;
+          this.y = event.clientY - this.elementy;
           this.utilchangexy();
         }
       },
       changeposition: function () {
-        console.log("changeposition");
         this.utilchangexy();
       },
       utilchangexy: function () {
         this.xpx = this.x + 'px';
         this.ypx = this.y + 'px';
       }
-
     }
-
   }
 </script>
 <style>
   .spaceborder {
+    position: absolute;
+    top: 320px;
+    left: 220px;
     border: 1px solid purple;
     height: 500px;
+    width: 1000px;
   }
 
   .dragelement {
@@ -88,5 +95,6 @@
     width: 100px;
     position: relative;
     z-index: 100;
+    background-color: #55a532;
   }
 </style>
