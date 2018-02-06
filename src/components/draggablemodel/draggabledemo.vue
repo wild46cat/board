@@ -51,7 +51,7 @@
         console.log("mousedown");
         console.log(event);
         this.canMoveFlag = true;
-        this.elementx = event.clientX;
+        this.elementx = event.offsetX;
         this.elementy = event.offsetY;
       },
       mouseup: function () {
@@ -62,8 +62,8 @@
         if (this.canMoveFlag) {
           console.log(event.offsetX + ":" + event.offsetY);
           console.log('move');
-          this.x = event.clientX - this.elementx;
-          this.y = event.clientY - this.elementy;
+          this.x = event.clientX - this.divx - this.elementx;
+          this.y = event.clientY - this.divy - this.elementy;
           this.utilchangexy();
         }
       },
